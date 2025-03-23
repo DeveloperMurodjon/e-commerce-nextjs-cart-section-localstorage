@@ -7,20 +7,22 @@ import Link from 'next/link';
 
 function SocialModal() {
     useEffect(() => {
+        // Avvalgi vaqtni olish (millisekundlarda)
+        let lastTime = Number(localStorage.getItem("dailymodal")) || 0;
 
-        // avvalgiVaqt
-        let lastHour = Number(localStorage.getItem("dailymodal")) || 0
-        //hozirgi vaqt
-        let d = new Date()
-        let currentHour = d.getHours()
+        // Hozirgi vaqt (millisekundlarda)
+        let currentTime = Date.now();
 
-        //vaqtni tekshirish
+        // 24 soat (millisekundlarda)
+        let oneDay = 24 * 60 * 60 * 1000;
+
+        // Modalni chiqarish sharti
         function shouldShowModal() {
-            return !lastHour || currentHour - lastHour >= 24
+            return !lastTime || currentTime - lastTime >= oneDay;
         }
 
         if (shouldShowModal()) {
-            //10 sekunddan so'ng toastni render qilish
+            // 10 sekunddan keyin toastni chiqarish
             const timeout = setTimeout(() => {
                 toast.info(
                     <div className='flex gap-3'>
@@ -34,30 +36,24 @@ function SocialModal() {
                             <LinkedinIcon size={40} color='#0A66C2' />
                         </Link>
                     </div>,
-                    {
-                        position: "bottom-right",
-                        autoClose: 10000,
-                        hideProgressBar: true,
-                        closeButton: false,
-                        icon: false,
-                    }
-                )
-                localStorage.setItem("dailymodal", currentHour)
-            }, 10000)
-            return () => clearTimeout(timeout)
-        }
+                );
 
-    }, [])
+                // Hozirgi vaqtni saqlash (millisekundlarda)
+                localStorage.setItem("dailymodal", String(currentTime));
+            }, 10000);
+
+            return () => clearTimeout(timeout);
+        }
+    }, []);
 
     return (
         <div>
             <ToastContainer
-                toastStyle={{ padding: '4px', width: 'auto', }}
+                toastStyle={{ padding: '4px', width: 'auto' }}
                 icon={false}
                 position="bottom-right"
                 autoClose={10000}
                 closeButton={false}
-
                 hideProgressBar={true}
                 newestOnTop={false}
                 closeOnClick={true}
@@ -67,7 +63,6 @@ function SocialModal() {
             />
         </div>
     );
-
 }
 
 export function showToast(message, type = "info") {
