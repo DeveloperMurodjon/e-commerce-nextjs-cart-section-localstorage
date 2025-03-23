@@ -7,20 +7,40 @@ import Link from 'next/link';
 
 function SocialModal() {
     useEffect(() => {
-        toast.info(
-            <div className='flex gap-3'>
-                <Link href='https://instagram.com' >
-                    <InstagramIcon size={40} color="#E4405F" />
-                </Link>
-                <Link href='https://youtube.com' >
-                    <YoutubeIcon size={40} color='#FF0000' />
-                </Link>
-                <Link href='https://linkedin.com' >
-                    <LinkedinIcon size={40} color='#0A66C2' />
-                </Link>
-            </div>,
-        );
-    }, []);
+
+        // avvalgiVaqt
+        let lastHour = Number(localStorage.getItem("dailymodal")) || 0
+        //hozirgi vaqt
+        let d = new Date()
+        let currentHour = d.getHours()
+
+        //vaqtni tekshirish
+        function shouldShowModal() {
+            return !lastHour || currentHour - lastHour >= 24
+        }
+
+        if (shouldShowModal()) {
+            //10 sekunddan so'ng toastni render qilish
+            const timeout = setInterval(() => {
+                toast.info(
+                    <div className='flex gap-3'>
+                        <Link href='https://instagram.com' >
+                            <InstagramIcon size={40} color="#E4405F" />
+                        </Link>
+                        <Link href='https://youtube.com' >
+                            <YoutubeIcon size={40} color='#FF0000' />
+                        </Link>
+                        <Link href='https://linkedin.com' >
+                            <LinkedinIcon size={40} color='#0A66C2' />
+                        </Link>
+                    </div>
+                )
+                localStorage.setItem("dailymodal", currentHour)
+            }, 10000)
+            return () => clearTimeout(timeout)
+        }
+
+    }, [])
 
     return (
         <div>
@@ -40,6 +60,7 @@ function SocialModal() {
             />
         </div>
     );
+
 }
 
 export function showToast(message, type = "info") {

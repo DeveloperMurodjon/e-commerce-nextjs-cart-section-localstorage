@@ -15,6 +15,7 @@ const ProductCard = ({ p }) => {
 					width={300}
 					height={200}
 					alt={p.title}
+					priority={true}
 				/>
 			</div>
 			<p className='line-clamp-2 mb-4'>{p.title}</p>
@@ -34,5 +35,3 @@ const ProductCard = ({ p }) => {
 };
 
 export default ProductCard;
-
-// ! Social modal yasang. u saytga kirilgandan 10 soniya o'tgach ekranda ko'rinsin. ekranda 10 soniya ko'rinib so'ng yo'q bo'lib kesin. agar user 10 soniya ichida saytda chiqib ketsa, keyingi kirgandan keyin 10 sekund kutgandan keyin modal ko'rin. Agar modal ko'rinib turgan vaqtda 10 sekund kutmasdan chiqib ketsa modal keyingi kirganda birdan chiqsin. moda kuniga 1 marta chiqishi kerak

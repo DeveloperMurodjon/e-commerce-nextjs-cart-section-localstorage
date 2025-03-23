@@ -12,23 +12,7 @@ const Products = async () => {
 	} catch (err) {
 		console.log(err);
 	}
-	/* 
-  text-sm,xl,lg,md,2xl..5xl - font-size
-  text-[color]-50...900 color: red;
-  text-[align] center,left,right - text-align: center
 
-  font-[weight] bold,bolder,semibold,thin,light - font-weight
-  font-[family] sans-serif,serif - font-family: serif
-  
-  p-[] - padding
-  m-[] - margin
-
-  underline - text-decoration: underline
-  uppercase - text-transform: uppercase
-  capitalize, lowercase - text-transform: []
-
-  
-*/
 	return (
 		<div className='py-5'>
 			<div className='flex gap-y-5 flex-wrap items-center justify-between mb-5'>
