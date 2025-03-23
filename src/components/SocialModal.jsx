@@ -21,7 +21,7 @@ function SocialModal() {
 
         if (shouldShowModal()) {
             //10 sekunddan so'ng toastni render qilish
-            const timeout = setInterval(() => {
+            const timeout = setTimeout(() => {
                 toast.info(
                     <div className='flex gap-3'>
                         <Link href='https://instagram.com' >
@@ -33,7 +33,14 @@ function SocialModal() {
                         <Link href='https://linkedin.com' >
                             <LinkedinIcon size={40} color='#0A66C2' />
                         </Link>
-                    </div>
+                    </div>,
+                    {
+                        position: "bottom-right",
+                        autoClose: 10000,
+                        hideProgressBar: true,
+                        closeButton: false,
+                        icon: false,
+                    }
                 )
                 localStorage.setItem("dailymodal", currentHour)
             }, 10000)
