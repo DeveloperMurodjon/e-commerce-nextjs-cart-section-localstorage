@@ -9,7 +9,6 @@ const Products = async () => {
 		const res = await fetch('https://dummyjson.com/products');
 		let data = await res.json();
 		products = data.products;
-		console.log(products);
 	} catch (err) {
 		console.log(err);
 	}
