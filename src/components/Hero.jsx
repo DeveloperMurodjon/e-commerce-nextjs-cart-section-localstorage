@@ -1,5 +1,4 @@
 import React from 'react';
-import Navigation from './Navigation';
 import Image from 'next/image';
 import { HeroImage } from '@/assets';
 
@@ -7,8 +6,7 @@ import { HeroImage } from '@/assets';
 const Hero = () => {
 	return (
 		<div>
-			<Navigation />
-			<Image src={HeroImage} />
+			<Image className='mb-[97px]' src={HeroImage} priority={true} alt={"hero image"} />
 		</div>)
 };
 
