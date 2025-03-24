@@ -5,3 +5,5 @@ export { default as SearchImage } from "./search.png";
 export { default as FavoritesImage } from "./favorites.png";
 export { default as StateImage } from "./state.png";
 export { default as CartImage } from "./cart.png";
+export { default as CartItem } from "./cartitem.png";
+export { default as Del } from "./del.png";
