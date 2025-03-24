@@ -64,8 +64,8 @@ function Cart() {
                                         <button className="px-3 py-1 text-lg text-[#454545]">+</button>
                                     </td>
 
-                                    <td className="py-5 px-6 text-gray-600 text-sm text-center">
-                                        <Image src={Del} alt="delete button" className="cursor-pointer" />
+                                    <td className=" text-gray-600 text-sm ">
+                                        <Image src={Del} alt="delete button" className="     cursor-pointer" />
                                     </td>
                                 </tr>
                             ))}
